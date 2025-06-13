@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NETLIFY_USE_YARN = "false"
+  NPM_FLAGS = "--no-save"
+  NPM_LVL = "error"
+
+[functions]
+  node_bundler = "esbuild"
+
+[plugins]
+  # Disable Next.js plugin as it's not needed for this project
+  "@netlify/plugin-nextjs" = { enabled = false }
+
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+  enabled = false
+
+[[plugins]]
+  package = "netlify-plugin-no-more-404"
+  enabled = false
